@@ -17,7 +17,7 @@ import java.util.List;
 public class ShowDataActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabeseHelper db;
-    ArrayList<String> nim,name,program,noHp,email;
+    ArrayList<String> id,nim,name,program,noHp,email;
     CustomAdapter adapter;
 
 
@@ -29,13 +29,15 @@ public class ShowDataActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
 
         db  = new DatabeseHelper(ShowDataActivity.this);
+        id =  new ArrayList<>();
         nim = new ArrayList<>();
         name = new ArrayList<>();
         program = new ArrayList<>();
         noHp = new ArrayList<>();
         email = new ArrayList<>();
+
         showData();
-        adapter = new CustomAdapter(ShowDataActivity.this,this,nim,name,program,noHp,email);
+        adapter = new CustomAdapter(ShowDataActivity.this,this,id,nim,name,program,noHp,email);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(ShowDataActivity.this));
 
@@ -57,13 +59,12 @@ public class ShowDataActivity extends AppCompatActivity {
         }else{
 
             while (cursor.moveToNext()){
-                Log.d("hehe",cursor.getString(2));
+                id.add(cursor.getString(0));
                 nim.add(cursor.getString(1));
                 name.add(cursor.getString(2));
-                nim.add(cursor.getString(3));
-                program.add(cursor.getString(4));
-                noHp.add(cursor.getString(5));
-                email.add(cursor.getString(6));
+                program.add(cursor.getString(3));
+                noHp.add(cursor.getString(4));
+                email.add(cursor.getString(5));
 
             }
         }

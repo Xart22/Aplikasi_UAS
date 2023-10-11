@@ -42,7 +42,7 @@ public class DatabeseHelper extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    void addData(int nim,String name,String program,int noHp, String email){
+    void addData(Long nim,String name,String program,Long noHp, String email){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_NIM,nim);
@@ -67,5 +67,33 @@ public class DatabeseHelper extends SQLiteOpenHelper{
             cursor =  db.rawQuery(query,null);
         }
         return  cursor;
+    }
+
+    void updateData(String row_id, Long nim,String name,String program,Long noHp, String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_NIM,nim);
+        cv.put(COLUMN_NAME,name);
+        cv.put(COLUMN_PROGRAM_STUDY,program);
+        cv.put(COLUMN_NO_HP,noHp);
+        cv.put(COLUMN_EMAIL,email);
+
+        long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
+        if(result == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Update Data BERHASIL!", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    void deleteOneRow(String row_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(TABLE_NAME, "_id=?", new String[]{row_id});
+        if(result == -1){
+            Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Hapus berhasil!.", Toast.LENGTH_SHORT).show();
+        }
     }
 }
