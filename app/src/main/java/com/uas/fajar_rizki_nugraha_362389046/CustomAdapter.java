@@ -19,12 +19,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
+    private static final String TAG = "CustomAdapter";
     private Context context;
     private Activity activity;
-    private  ArrayList nim,name,program,noHp,email;
+    private ArrayList nim, name, program, noHp, email;
 
     CustomAdapter(Activity activity, Context context, ArrayList nim, ArrayList name, ArrayList program,
-                  ArrayList noHp,ArrayList email){
+                  ArrayList noHp, ArrayList email) {
         this.activity = activity;
         this.context = context;
         this.nim = nim;
@@ -32,23 +33,30 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         this.program = program;
         this.noHp = email;
         this.email = email;
+
+        Log.d(TAG, "CustomAdapter: " + nim);
+        Log.d(TAG, "CustomAdapter: " + name);
+        Log.d(TAG, "CustomAdapter: " + program);
+        Log.d(TAG, "CustomAdapter: " + noHp);
+        Log.d(TAG, "CustomAdapter: " + email);
+
     }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.mahasiwa_container,parent,false));
+        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.mahasiwa_container, parent, false));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, int position) {
-        Log.d("tes",""+nim.get(position));
-        holder.tvNim.setText(String.valueOf(nim.get(position)));
+//        holder.tvNim.setText(String.valueOf(nim.get(position)));
 //        holder.tvName.setText(String.valueOf(name.get(position)));
 //        holder.tvProgram.setText(String.valueOf(program.get(position)));
 //        holder.tvPhone.setText(String.valueOf(noHp.get(position)));
 //        holder.tvEmail.setText(String.valueOf(email.get(position)));
-        //Recyclerview onClickListener
+        // Recyclerview onClickListener
 //        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -69,7 +77,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvNim,tvName,tvProgram,tvPhone,tvEmail;
+        TextView tvNim, tvName, tvProgram, tvPhone, tvEmail;
         LinearLayout mainLayout;
 
         MyViewHolder(@NonNull View itemView) {

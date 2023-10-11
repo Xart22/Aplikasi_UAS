@@ -57,13 +57,13 @@ public class ShowDataActivity extends AppCompatActivity {
         }else{
 
             while (cursor.moveToNext()){
-                Log.d("hehe",cursor.getString(1));
+                Log.d("hehe",cursor.getString(2));
                 nim.add(cursor.getString(1));
-//                name.add(cursor.getString(2));
-//                nim.add(cursor.getString(3));
-//                program.add(cursor.getString(4));
-//                noHp.add(cursor.getString(5));
-//                email.add(cursor.getString(6));
+                name.add(cursor.getString(2));
+                nim.add(cursor.getString(3));
+                program.add(cursor.getString(4));
+                noHp.add(cursor.getString(5));
+                email.add(cursor.getString(6));
 
             }
         }

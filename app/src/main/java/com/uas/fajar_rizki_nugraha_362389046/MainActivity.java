@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText eTNIM,eTName,etProgram,eTNoHp,eTmail;
+    TextInputLayout eTNIM,eTName,etProgram,eTNoHp,eTmail;
     Button saveBtn,showBtn;
 
 
@@ -25,22 +27,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         eTNIM = findViewById(R.id.et_nim);
-//        eTName =findViewById(R.id.eTName);
-//        etProgram =findViewById(R.id.etProgram);
-//        eTNoHp =findViewById(R.id.eTNoHp);
-//        eTmail =findViewById(R.id.eTmail);
-//        saveBtn =findViewById(R.id.saveBtn);
-//        showBtn =findViewById(R.id.showBtn);
+        eTName =findViewById(R.id.eTName);
+        etProgram =findViewById(R.id.etProgram);
+        eTNoHp =findViewById(R.id.eTNoHp);
+        eTmail =findViewById(R.id.eTmail);
+        saveBtn =findViewById(R.id.saveBtn);
+        showBtn =findViewById(R.id.showBtn);
 
-//        saveBtn.setOnClickListener(view -> {
-//            DatabeseHelper db = new DatabeseHelper(MainActivity.this);
-//            db.addData(Integer.parseInt(eTNIM.getText().toString()),eTName.getText().toString(),etProgram.getText().toString(),Integer.parseInt(eTNoHp.getText().toString()),eTmail.getText().toString());
-//        });
-//
-//        showBtn.setOnClickListener(view -> {
-//            Intent intent = new Intent(MainActivity.this,ShowDataActivity.class);
-//            startActivity(intent);
-//        });
+        saveBtn.setOnClickListener(view -> {
+            DatabeseHelper db = new DatabeseHelper(MainActivity.this);
+            db.addData(Integer.parseInt(eTNIM.getEditText().getText().toString()),eTName.getEditText().getText().toString(),etProgram.getEditText().getText().toString(),Integer.parseInt(eTNoHp.getEditText().getText().toString()),eTmail.getEditText().getText().toString());
+        });
+
+        showBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this,ShowDataActivity.class);
+            startActivity(intent);
+        });
 
 
 
